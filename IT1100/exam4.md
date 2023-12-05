@@ -14,9 +14,9 @@ Find jpg files in home that are larger than 1Mb | count the amount of files
 find ~ -type f -name "*.JPG" -size +1M | wc -l
 ```
 
-Find executable location
+Find executable location (ie. `cd`)
 ```bash
-find ~ -type f -name "*.JPG" -size +1M | wc -l
+which cd
 ```
 
 Execute command on found files (ie. delete all found)
@@ -194,11 +194,49 @@ Naming conventions; each physical device can be partitioned:
 
 # Practice Exam
 
-## Part 1
+## Part 1: Grep
 Using the file `/usr/share/dict/words`:
 
-Locate all words that contain "carp":
+1. Locate all words that contain "carp", print the number of those words occuring:
 
 ```bash
 cat /usr/share/dict/words | grep -e "*carp*" | wc -l
 ```
+
+2. Locate all words starting with `f`, `i`, `s` or `h`:
+```bash
+cat /usr/share/dict/words | grep -e "^[fish]" | wc -l
+```
+
+3. Locate all words that end in `shy`, output to `shy.txt`:
+```bash
+cat /usr/share/dict/words | grep -e "shy$" > shy.txt
+```
+
+4. Use regular expressions to locate all words that contain `fish` but does not end with `s`.
+```bash
+cat /usr/share/dict/words | grep -e "fish" | grep -e "[^s]$"
+```
+
+5. Use regular expressions to locate all words that begin with `un` and end with `ly`
+```bash
+cat /usr/share/dict/words | grep -e "^un" | grep -e "ly$"
+```
+
+## Part 2: awk/sed
+1. Print lines 163-171, but only columns 1 and 4, each column separated with a space
+```bash
+cat Fish_Stocking_Report_2014.csv | sed -n '163,171p' | awk -F "," '{print $1 " " $4}'
+```
+
+2. Print lines 436,446,456,466,476,486; Print the sum of column 4 and 5:
+```bash
+cat Fish_Stocking_Report_2014.csv | sed -n '436~10p' | sed -n '1,6p' | awk -F ',' '{print $4+$5}'
+```
+
+3. Print every other line from 637-669. Include columns 3, 4 and 5. Separate 3 and 4 with a space.
+Preface column 5 with the would `" Average Length: "`.
+```bash
+cat Fish_Stocking_Report_2014.csv | sed -n '637,669p' | sed -n '1~2p' | awk -F "," '{print $3 " " $4 " Average Length: " $5}'
+```
+
