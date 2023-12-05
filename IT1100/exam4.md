@@ -135,11 +135,24 @@ awk '{ print "the average is ", ($1+$2+$3)/3 }' grades
 ```
 
 
-## piping
+## inodes
 
-# inodes
+https://computing.utahtech.edu/it/1100/slides/slides15.php
 
+List inode number and the metadata of files in root
+```bash
+ls -lai /
+```
 
+Additional metadata of file using stat
+```bash
+stat file.txt
+```
+
+Show many inodes we have and how many are available to us
+```bash
+df -i
+```
 
 ## Partition
 
@@ -148,21 +161,18 @@ Naming conventions; each physical device can be partitioned:
 - `/dev/sdb7` # seventh partition on second drive of type scsi
 
 ### Steps to partition - [screenshot help](https://utahtech.instructure.com/courses/897667/files/154748053?module_item_id=22616069)
-
 1. `sudo cfdisk`
 2. Select 'Free space'
 3. Enter amount for 'Partition size'
 4. Select `[ Write ]`, type 'yes'
 
 ### Formatting
-
 1. `sudo cfdisk`
 2. Note 'Device' path (ie. `/dev/sda5`)
 3. `sudo mkfs.ext4 /dev/sda5`
 
 
 ### Mounting
-
 1. `cd /mnt`
 2. `sudo mkdir some-name`
 3. `sudo mount /dev/sda5 /mnt/some-name`
@@ -175,4 +185,20 @@ Naming conventions; each physical device can be partitioned:
 ```bash
 /dev/sda5 /mnt/some-name-5 ext4 defaults 0 0      # mkfs.ext4
 /dev/sda6 /mnt/some-name-6 ext3 defaults 0 0      # mkfs.ext3
+```
+
+### Testing (unmount, mount all)
+1. `sudo umount /dev/sda5`
+2. `sudo mount -a`
+
+
+# Practice Exam
+
+## Part 1
+Using the file `/usr/share/dict/words`:
+
+Locate all words that contain "carp":
+
+```bash
+cat /usr/share/dict/words | grep -e "*carp*" | wc -l
 ```
