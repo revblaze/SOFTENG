@@ -4,9 +4,14 @@ Find, Grep, Regex, awk, sed, partition
 ## Find
 https://computing.utahtech.edu/it/1100/slides/slides17.php
 
-Find filename in root (hide permission errors)
+In root `/`, find `filename` (and hide permission errors)
 ```bash
-find / -type f -name "Fish_Stocking_Report_2014.csv" 2> /dev/null
+find / -type f -name "filename" 2> /dev/null
+```
+
+In root `/`, find `/some/directory` (and hide permission errors)
+```bash
+find / -type d -name "/some/directory" 2> /dev/null
 ```
 
 In home `~`, find JPG files that are larger than 1Mb | count the amount of files
