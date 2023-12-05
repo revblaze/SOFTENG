@@ -4,7 +4,7 @@ Find, Grep, Regex, awk, sed, partition
 ## Find
 https://computing.utahtech.edu/it/1100/slides/slides17.php
 
-Find filename in root
+Find filename in root (hide permission errors)
 ```bash
 find / -type f -name "Fish_Stocking_Report_2014.csv" 2> /dev/null
 ```
