@@ -46,7 +46,7 @@ find ./foo -type f -name "*fish*.txt" | xargs -I {} sh -c 'mv "$1" "$1.FOUND"' _
 
 https://computing.utahtech.edu/it/1100/slides/slides19.php
 
-Search through found files for a string (ie. `hello`), then output the amount of times it occurs:
+Search through files of current directory `.` (recursively) for a string (ie. `hello`), then output the amount of times it occurs:
 ```bash
 find . | grep 'hello' | wc -l
 ```
