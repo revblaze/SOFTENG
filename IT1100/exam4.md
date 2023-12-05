@@ -137,6 +137,42 @@ awk '{ print "the average is ", ($1+$2+$3)/3 }' grades
 
 ## piping
 
-Remove the last character of every line
+# inodes
+
+
 
 ## Partition
+
+Naming conventions; each physical device can be partitioned:
+- `/dev/sda1` # first partition on first drive of type scsi
+- `/dev/sdb7` # seventh partition on second drive of type scsi
+
+### Steps to partition - [screenshot help](https://utahtech.instructure.com/courses/897667/files/154748053?module_item_id=22616069)
+
+1. `sudo cfdisk`
+2. Select 'Free space'
+3. Enter amount for 'Partition size'
+4. Select `[ Write ]`, type 'yes'
+
+### Formatting
+
+1. `sudo cfdisk`
+2. Note 'Device' path (ie. `/dev/sda5`)
+3. `sudo mkfs.ext4 /dev/sda5`
+
+
+### Mounting
+
+1. `cd /mnt`
+2. `sudo mkdir some-name`
+3. `sudo mount /dev/sda5 /mnt/some-name`
+4.  Check by using command `mount` after
+
+### Mounting Persistently
+5. `sudo nano /etc/fstab`
+6. Add the following per mount:
+
+```bash
+/dev/sda5 /mnt/some-name-5 ext4 defaults 0 0      # mkfs.ext4
+/dev/sda6 /mnt/some-name-6 ext3 defaults 0 0      # mkfs.ext3
+```
