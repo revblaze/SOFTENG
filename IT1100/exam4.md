@@ -9,9 +9,15 @@ Find filename in root (hide permission errors)
 find / -type f -name "Fish_Stocking_Report_2014.csv" 2> /dev/null
 ```
 
-Find jpg files in home that are larger than 1Mb | count the amount of files
+In home `~`, find JPG files that are larger than 1Mb | count the amount of files
 ```bash
 find ~ -type f -name "*.JPG" -size +1M | wc -l
+```
+
+In home `~`, find all files made within the last 10 minutes
+```bash
+find ~ -type f -name "*" -mmin -10
+
 ```
 
 Find executable location (ie. `cd`)
@@ -35,7 +41,7 @@ find ./foo -type f -name "*fish*.txt" | xargs -I {} sh -c 'mv "$1" "$1.FOUND"' _
 
 https://computing.utahtech.edu/it/1100/slides/slides19.php
 
-Search through found files for a string, then output the amount of times it occurs
+Search through found files for a string (ie. `hello`), then output the amount of times it occurs:
 ```bash
 find . | grep 'hello' | wc -l
 ```
@@ -66,6 +72,11 @@ Anchors:
 Replace all instances of `day` with `night` inside `myfile.txt`
 ```bash
 sed 's/day/night/g' myfile.txt
+```
+
+Remove all instances of the substring `rem`:
+```bash
+sed 's/rem//g' myfile.txt
 ```
 
 Do not print first line
