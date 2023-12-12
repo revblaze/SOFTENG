@@ -1,4 +1,4 @@
-# 5. Commands
+# Chapter 5: Commands
 
 `which` (only works for executable programs)
 `help` (works on shell commands)
@@ -65,10 +65,7 @@ echo "My name is fred" | wc
 cat /etc/passwd | less
 ```
 
-# 7. 
-
-
-# User Accounts
+# Chapter 7: User Accounts
 
 ## The Users in a Linux System
 The Users in a Linux system are stored in the `/etc/passwd` file. On a new install, many users are listed because each program gets its own user with limited permissions for protection.
@@ -244,15 +241,6 @@ The umask sets default permissions for newly created files. It can be adjusted u
   - Save: `Ctrl-o`
   - Exit: `Ctrl-x`
 
-### VI / VIM
-- Pre-installed with most Linux distributions.
-- Mode-based: normal, insert, and visual modes.
-- Commands:
-  - Open: `vi sauce.txt`
-  - Edit: Enter insert mode with `i`.
-  - Save: `:w`
-  - Exit: `:q`
-
 ### Emacs
 - Not pre-installed with Linux.
 - Powerful editor with text-based and GUI versions.
@@ -267,9 +255,80 @@ The umask sets default permissions for newly created files. It can be adjusted u
 - GUI-based editor, pre-installed with GUI Linux.
 - Can only run on GUI systems.
 
-### Editor Commands Format
-- General format: `editor-name filename`
-- Examples: `vi testing.txt`, `vim testing.txt`, `gvim testing.txt`, `nano testing.txt`, `emacs testing.txt`, `gedit testing.txt`
+### VI / VIM
+- Pre-installed with most Linux distributions.
+- Mode-based: normal, insert, and visual modes.
+- Commands:
+  - Open: `vi sauce.txt`
+  - Edit: Enter insert mode with `i`.
+  - Save: `:w`
+  - Exit: `:q`
+
+# Vim Command Cheat Sheet
+
+Vim is a powerful text editor used in CLI (command line interface). This cheat sheet provides a collection of essential Vim commands.
+
+## Basic Navigation
+- `h`: Move left
+- `j`: Move down
+- `k`: Move up
+- `l`: Move right
+
+## Jumping to a Specific Line
+- `:<line_number>`: Jump to a specific line number
+- `gg`: Jump to the start of the file
+- `G`: Jump to the end of the file
+
+## Editing Text
+- `i`: Enter insert mode before the cursor
+- `a`: Enter insert mode after the cursor
+- `o`: Open a new line below and enter insert mode
+- `O`: Open a new line above and enter insert mode
+
+## Deleting Text
+- `x`: Delete the character under the cursor
+- `dd`: Delete the entire line
+- `dw`: Delete a word
+- `d$`: Delete to the end of the line
+
+## Replacing Text
+- `r<char>`: Replace the character under the cursor with `<char>`
+- `cw`: Replace a word
+- `:%s/<old>/<new>/g`: Replace all occurrences of `<old>` with `<new>` in the file
+
+## Copy and Paste
+- `yy`: Copy (yank) the current line
+- `yw`: Copy (yank) the current word
+- `p`: Paste below the cursor
+- `P`: Paste above the cursor
+
+## Undo and Redo
+- `u`: Undo the last operation
+- `Ctrl-r`: Redo the last undo
+
+## Exiting Vim
+- `:w`: Write (save) the file
+- `:q`: Quit Vim
+- `:wq` or `:x`: Write and quit
+- `:q!`: Quit without saving
+
+## Visual Mode
+- `v`: Enter visual mode
+- `V`: Enter visual line mode
+- `Ctrl-v`: Enter visual block mode
+- `y`: Yank (copy) the selected text
+- `d`: Delete the selected text
+
+## Searching
+- `/<text>`: Search for `<text>`
+- `n`: Go to the next occurrence
+- `N`: Go to the previous occurrence
+
+## Miscellaneous
+- `.`: Repeat the last command
+- `ZZ`: Save and exit
+- `:%y`: Yank the whole file
+
 
 # Chapter 13: Customizing the Prompt
 
